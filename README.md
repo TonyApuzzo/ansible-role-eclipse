@@ -3,7 +3,8 @@ Ansible role eclipse
 
 [![Build Status](https://travis-ci.org/nwoetzel/ansible-role-eclipse.svg?branch=master)](https://travis-ci.org/nwoetzel/ansible-role-eclipse)
 
-This Ansible Eclipse role is based on the work from [Alban Andrieu](fr.linkedin.com/in/nabla/) which one may find [here](https://github.com/AlbanAndrieu/ansible-eclipse). It has been extensively rewritten to support anysier installation and configuration of plugins, different eclipse distributions and packages (downloads).
+This Ansible Eclipse role is based on the work from [Nils Wötzel](https://github.com/nwoetzel) which one may find [here](https://github.com/nwoetzel/ansible-role-eclipse).
+It has been modified to support more plugins and to remove the dependency [nwoetzel/ansible-role-oracle-java](https://github.com/nwoetzel/ansible-role-oracle-java) since I use ansiblebit.oracle-java to install Oracle Java.  See the bottom of this README for a code snippet to install and configure Java.
 
 ## Description
 
@@ -12,7 +13,7 @@ This ansible roles installs a eclipse distribution and optional plugins.
 ## Dependencies
 
 - ansible >= 2
-- nwoetzel.java-oracle
+- Java JDK in PATH and/or JAVA_HOME environment variable set
 
 ## Role Variables
 
@@ -49,7 +50,33 @@ Adaption for either limitation can be easily implemented.
 
 ## Dependencies
 
-This role depends on [nwoetzel/ansible-role-oracle-java](https://github.com/nwoetzel/ansible-role-oracle-java) to install a jdk and to set the '-vm' argument in the eclipse.ini. This dependency can be removed from meta/main.yml - and the role will work but will require a java to be in the PATH or JAVA_HOME to be set.
+```YAML
+---
+# Java Playbook snippet
+
+- hosts: all
+  gather_facts: yes
+  roles:
+    # Install Oracle Java
+    - role: ansiblebit.oracle-java
+  vars:
+    java_shell_profile: no
+  tasks:
+    - name: Set Oracle Java as default
+      # Copy /etc/profile.d/oracle_jdk.sh with content
+      become: yes
+      copy:
+        content: |
+                 #!/bin/bash
+                 export JDK_HOME={{ oracle_java_home }}
+                 export JAVA_HOME={{ oracle_java_home }}
+                 export JRE_HOME={{ oracle_java_home }}/jre
+                 export PATH=$PATH:{{ oracle_java_home }}/bin:{{ oracle_java_home }}/jre/bin
+        dest: /etc/profile.d/oracle_jdk.sh
+    # Export the env on th fly to make system wide change
+    - name: Source the file /etc/profile.d/oracle_jdk.sh
+      action: shell source /etc/profile
+```
 
 ## License
 
