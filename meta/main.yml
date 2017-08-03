@@ -1,21 +1,23 @@
 ---
 galaxy_info:
-  author: Nils Woetzel
+  author: Tony Apuzzo (Forked from version by Nils Woetzel)
   description: Installer for eclipse of different distro-package combination and with selected plugins.
-  company: HITS gGmbH, Heidelberg, Germany
+  company: Flatirons-Jouve
   license: GPLv3
   min_ansible_version: 2.0.2
   platforms:
   - name: Ubuntu
     versions:
     - all
+  - name: EL
+    versions:
+    - 6
+    - 7
   galaxy_tags:
     - IDE
     - eclipse
     - development
 dependencies:
-  - name: nwoetzel.java-oracle
-    version: v1.3.3
   - name: GROG.package
     version: v1.2.4
     become: yes
