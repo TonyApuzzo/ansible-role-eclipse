@@ -266,7 +266,7 @@ eclipse_defaults:
         - de.walware.statet.r.sweave.feature.group
         - de.walware.statet.redocs.wikitext.r.feature.group
       creates_feature: de.walware.statet
-    AnyEditTools:
+    anyedittools:
       repositories:
         - http://andrei.gmxhome.de/eclipse/
       install_units:
@@ -278,7 +278,7 @@ eclipse_defaults:
       install_units:
         - org.activiti.designer.feature.feature.group
       creates_feature: org.activiti.designer
-    decompiler:
+    eclipse_class_decompiler:
       repositories:
         - http://www.cpupk.com/decompiler/update/
       install_units:
@@ -289,7 +289,7 @@ eclipse_defaults:
         - org.sf.feeling.decompiler.procyon.feature.group
         - org.sf.feeling.decompiler.source.feature.group
       creates_feature: org.sf.feeling.decompiler
-    directory_studio:
+    apache_directory_studio:
       repositories:
         - http://directory.apache.org/studio/update/
       install_units:
@@ -299,6 +299,7 @@ eclipse_defaults:
         - org.apache.directory.studio.schemaeditor.feature.feature.group
       creates_feature: org.apache.directory.studio
     docker:
+      repositories: []
       install_units:
         - org.eclipse.linuxtools.docker.feature.feature.group
       creates_feature: org.eclipse.linuxtools.docker
@@ -308,7 +309,7 @@ eclipse_defaults:
       install_units:
         - org.sweetlemonade.eclipse.json.feature.feature.group
       creates_feature: org.sweetlemonade.eclipse.json
-    zeroturnaround:
+    jrebel:
       repositories:
         - http://update.zeroturnaround.com/update-site/
       install_units:
