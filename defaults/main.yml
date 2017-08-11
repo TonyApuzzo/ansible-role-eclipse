@@ -3,8 +3,14 @@ eclipse_distro: luna
 eclipse_package: java # any of jee, java, cpp, dsl, php, rcp, parallel, testing, automative, scout etc.
 
 # the name of all plugins that should be installed
-# a complete list can be found in vars/main.yml
+# a complete list can be found in vars/main.yml eclipse_defaults.eclipse_plugins
 eclipse_plugins_install: []
+
+# Extra plugin definitions that are merged with eclipse_defaults.plugins 
+# NOTE:
+#   Adding plugins here DOES NOT install the plugins unless the plugin key
+#   is listed in eclipse_plugins_install!
+eclipse_additional_plugins: []
 
 # additonal packages that are installed through GROG.package ansible role
 package_list_eclipse: []
