@@ -47,6 +47,6 @@
 # all plugins
 - include: single_plugin.yml
   with_items: '{{ eclipse_plugins_install }}'
-  when: (eclipse_defaults.plugins[item] is defined)
+  when: (eclipse_all_plugins[item] is defined)
 #  ignore_errors: True
   tags: [eclipse_plugins]
