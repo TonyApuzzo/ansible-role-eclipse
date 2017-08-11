@@ -1,6 +1,8 @@
 Ansible role eclipse
 ====================
 
+NOTE: THIS FEATURE BRANCH WAS ABANDONED SINCE NILS ADDED THE 'eclipse_plugins_custom' FUNCTIONALITY WHICH WAS EQUIVALENT TO THIS (AND BETTER TO BOOT!)
+
 [![Build Status](https://travis-ci.org/nwoetzel/ansible-role-eclipse.svg?branch=master)](https://travis-ci.org/nwoetzel/ansible-role-eclipse)
 
 This Ansible Eclipse role is based on the work from [Nils Wötzel](https://github.com/nwoetzel) which one may find [here](https://github.com/nwoetzel/ansible-role-eclipse).
