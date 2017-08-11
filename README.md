@@ -4,7 +4,7 @@ Ansible role eclipse
 [![Build Status](https://travis-ci.org/nwoetzel/ansible-role-eclipse.svg?branch=master)](https://travis-ci.org/nwoetzel/ansible-role-eclipse)
 
 This Ansible Eclipse role is based on the work from [Nils Wötzel](https://github.com/nwoetzel) which one may find [here](https://github.com/nwoetzel/ansible-role-eclipse).
-It has been modified to support more plugins and to remove the dependency [nwoetzel/ansible-role-oracle-java](https://github.com/nwoetzel/ansible-role-oracle-java) since I use ansiblebit.oracle-java to install Oracle Java.  See the bottom of this README for a code snippet to install and configure Java.
+It has been modified to remove the dependency [nwoetzel/ansible-role-oracle-java](https://github.com/nwoetzel/ansible-role-oracle-java) since I use ansiblebit.oracle-java to install Oracle Java.  See the bottom of this README for a code snippet to install and configure Java.
 
 ## Description
 
