@@ -317,4 +317,6 @@ eclipse_defaults:
         - org.zeroturnaround.eclipse.m2e.feature.feature.group
         - org.zeroturnaround.eclipse.wtp.feature.feature.group
       creates_feature: org.zeroturnaround.eclipse
-eclipse_all_plugins : { eclipse_defaults.plugins | combine(eclipse_additional_plugins, recursive=true) }
+
+# The possible plugins
+eclipse_all_plugins: { eclipse_defaults.plugins | combine(eclipse_additional_plugins, recursive=true) }
