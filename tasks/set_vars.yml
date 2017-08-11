@@ -9,6 +9,11 @@
   failed_when: (eclipse_distro not in eclipse_defaults.distros) or
                (eclipse_package not in eclipse_defaults.distros[eclipse_distro].packages)
 
+- name: set and verify plugins
+  set_fact:
+    eclipse_all_plugins: "{{ eclipse_defaults.plugins | combine(eclipse_additional_plugins, recursive=true) }}"
+  #TODO: figure out how to fail if a plugin is requested but not defined
+               
 - name: set name of tar file
   set_fact:
     eclipse_file_tar:    "eclipse-{{ eclipse_package }}-{{ eclipse_distro }}-{{ eclipse_update }}-{{ eclipse_os }}{{ '-' ~ eclipse_gui if eclipse_gui }}{{ '-' ~ eclipse_arch if eclipse_arch }}.tar.gz"
