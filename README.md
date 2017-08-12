@@ -60,6 +60,64 @@ Adaption for either limitation can be easily implemented.
   roles:
     # Install Oracle Java
     - role: ansiblebit.oracle-java
+    # Install Eclipse with my plugins
+    - role: ansible-role-eclipse
+      eclipse_distro: oxygen
+      eclipse_package: jee
+      eclipse_service_release: R
+      eclipse_ini_flags_vmargs:
+        "-Xms": "1024m"
+        "-Xmx": "3172m"
+      eclipse_plugins_custom:
+        anyedittools:
+          repositories:
+            - http://andrei.gmxhome.de/eclipse/
+          install_units:
+            - AnyEditTools.feature.group
+          creates_feature: AnyEditTools
+        docker:
+          repositories: []
+          install_units:
+            - org.eclipse.linuxtools.docker.feature.feature.group
+          creates_feature: org.eclipse.linuxtools.docker
+        eclipse_class_decompiler:
+          repositories:
+            - http://www.cpupk.com/decompiler/update/
+          install_units:
+            - org.sf.feeling.decompiler.cfr.feature.group
+            - org.sf.feeling.decompiler.feature.group
+            - org.sf.feeling.decompiler.jad.feature.group
+            - org.sf.feeling.decompiler.jd.feature.group
+            - org.sf.feeling.decompiler.procyon.feature.group
+            - org.sf.feeling.decompiler.source.feature.group
+          creates_feature: org.sf.feeling.decompiler
+        jrebel:
+          repositories:
+            - http://update.zeroturnaround.com/update-site/
+          install_units:
+            - org.zeroturnaround.eclipse.feature.feature.group
+            - org.zeroturnaround.eclipse.m2e.feature.feature.group
+            - org.zeroturnaround.eclipse.wtp.feature.feature.group
+          creates_feature: org.zeroturnaround.eclipse
+        json_tools:
+          repositories:
+            - https://bitbucket.org/denmiroch/jsontools/raw/default/JsonSite/
+          install_units:
+            - org.sweetlemonade.eclipse.json.feature.feature.group
+          creates_feature: org.sweetlemonade.eclipse.json
+        sonarlint:
+          repositories:
+            - "http://eclipse.sonarlint.org/"
+          install_units:
+            - "org.sonarlint.eclipse.feature.feature.group"
+          creates_feature: "org.sonarlint.eclipse.feature"
+      eclipse_plugins_install:
+        - anyedittools
+        - docker
+        - eclipse_class_decompiler
+        - jrebel
+        - json_tools
+        - sonarlint
   vars:
     java_shell_profile: no
   tasks:
